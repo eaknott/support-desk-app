@@ -19,7 +19,8 @@ function Ticket() {
         }
 
         dispatch(getTicket(ticketId))
-    }, [isError, message, dispatch, ticketId])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isError, message, ticketId])
 
     if (isLoading) {
         return <Spinner />
@@ -32,7 +33,7 @@ function Ticket() {
   return (
     <div className="ticket-page">
         <header className="ticket-header">
-            <BackButton to='/tickets' />
+            <BackButton url='/tickets' />
             <h2>
                 Ticket ID: {ticket._id}
                 <span className={`status status-${ticket.status}`}>
