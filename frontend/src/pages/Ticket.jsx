@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getTicket, closeTicket } from '../features/tickets/ticketSlice'
-import { getNotes, createNote, reset as notesReset } from '../features/notes/noteSlice'
+import { getNotes, createNote } from '../features/notes/noteSlice'
 import { useParams, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import Modal from 'react-modal'
@@ -29,11 +29,10 @@ function Ticket() {
     const [modalIsOpen, setModalIsOpen] = useState(false)
     const [noteText, setNoteText] = useState('')
 
-    const { ticket, isLoading, isSuccess, isError, message } = useSelector((state) => state.tickets)
+    const { ticket, isLoading, isError, message } = useSelector((state) => state.tickets)
 
     const { notes, isLoading: notesIsLoading } = useSelector((state) => state.notes)
 
-    const params = useParams()
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const { ticketId } = useParams()
